@@ -1,0 +1,218 @@
+{
+	"chef_type": "role", 
+	"name": "os-security-patch-role", 
+	"default_attributes": {
+		"a01-su-file-config": {
+
+		},
+		"a02-unnecessary-services-stop": {
+			"servicelist": {
+				"type":"list",
+				"desc":"불필요한 서비스 중지",
+				"value":["sendmail", "vsftpd"]
+			}
+		},
+		"d00-run-non-root-account": {
+			"mysql_datadir": {
+				"type":"value",
+				"value":"/var/mysql"
+			}
+
+		},
+		"d98-weak-password-remove": {
+
+		},
+		"d99-permission-mysql-configure": {
+
+		},
+		"u01-root-district-remote": {
+			"openssh_dir": {
+				"type": "value",
+				"value": "/etc/ssh",
+				"desc": "OpenSSH 설치된 경로"
+			}
+		},
+		"u02-password-complexity": {
+			"passalgo": {
+				"type":"value",
+				"value":"sha512",
+				"desc":"패스워드 알고리즘 수정"
+			}
+		},
+		"u04-password-file-secure": {
+
+		},
+		"u05-root-home-path-configure": {
+
+		},
+		"u06-file-chown-configure": {
+
+		},
+		"u07-system-important-permission": {
+			"filelist": {
+				"type":"array-key",
+				"desc":"시스템 중요 파일 권한 변경",
+				"value":[
+					{"name":"/etc/hosts.allow", "value":"644"},
+					{"name":"/etc/hosts.deny", "value":"644"},
+					{"name":"/etc/hosts", "value":"600"},
+					{"name":"/etc/passwd", "value":"444"},
+					{"name":"/etc/shadow", "value":"400"},
+					{"name":"/etc/profile", "value":"444"},
+					{"name":"/etc/syslog.conf", "value":"644"},
+					{"name":"/etc/services", "value":"644"},
+					{"name":"/etc/xinetd.conf", "value":"600"},
+					{"name":"/etc/xinetd.d/*", "value":"600"},
+					{"name":"/etc/at.deny", "value":"640"},
+					{"name":"/etc/cron.deny", "value":"640"},
+					{"name":"/etc/cron.allow", "value":"640"}
+				]
+			}
+		},
+		"u11-minimal-user-admin-group": {
+
+		},
+		"u13-suid-sgid-configure": {
+			"binary": {
+				"type":"list",
+				"desc":"SUID SGID 설정",
+				"value":[
+					"/usr/bin/lpq-lpd", 
+					"/usr/bin/newgrp", 
+					"/sbin/unix_chkpwd", 
+					"/usr/bin/lpr-lpd", 
+					"/usr/bin/lpc-lpd", 
+					"/usr/sbin/traceroute", 
+					"/usr/bin/at"
+				]
+			}
+		},
+		"u14-user-shell-check":{
+
+		},
+		"u15-world-writable-file-check": {
+
+		},
+		"u25-env-file-permission-change": {
+			"envfile": {
+				"type":"list",
+				"desc":"Env 파일 권한 변경",
+				"value":[
+					".profile", 
+					".cshrc",
+					".kshrc", 
+					".login", 
+					".bash_profile", 
+					".bashrc", 
+					".bash_login", 
+					".exrc", 
+					".netrc",
+					".history", 
+					".sh_history", 
+					".bash_history", 
+					".dtprofile", 
+					".Xdefaults"
+				]
+			}
+		},
+		"u27-dev-unknown-devices-remove": {},
+		"u30-sendmail-service-stop": {},
+		"u33-home-directory-own-permission": {},
+		"u35-remove-hide-file": {},
+		"u45-su-restrict": {},
+		"u48-password-min-day": {},
+		"u49-remove-unnecessary-user": {
+			"grouplist": {
+				"type":"list",
+				"value":[
+					"game",
+					"news",
+					"jpp",
+					"games"
+				]
+			},
+			"userlist": {
+				"type":"list",
+				"value":[
+					"pulse", 
+					"nfsnobody", 
+					"adm", 
+					"lp", 
+					"sync", 
+					"shutdown", 
+					"halt", 
+					"news", 
+					"uucp", 
+					"operator",
+					"nuucp", 
+					"games", 
+					"gopher", 
+					"nfs", 
+					"nobody", 
+					"squid", 
+					"news", 
+					"jpp", 
+					"games", 
+					"adm", 
+					"game", 
+					"ftp"
+				]
+			}
+		},
+		"u50-user-root-minimal": {},
+		"u54-session-timeout-profile": {
+            "timeout":{
+                "type":"value",
+                "value":"300"
+            }
+		},
+		"u55-apache-unnecessary-file-remove": {
+			"apache-location":{
+				"type":"value",
+				"value":"/usr/local/apache2",
+				"desc":"Apache2 설치 경로"
+			}
+		},
+		"u61-openssh-port-change": {},
+		"u62-ftp-service-check": {},
+		"u69-login-banner": {}
+	}, 
+	"run_list": [
+		"recipe[os-security-patch-cookbook::a01-su-file-config]",
+		"recipe[os-security-patch-cookbook::a02-unnecessary-services-stop]",
+		"recipe[os-security-patch-cookbook::d00-run-non-root-account]",
+		"recipe[os-security-patch-cookbook::d98-weak-password-remove]",
+		"recipe[os-security-patch-cookbook::d99-permission-mysql-configure]",
+		"recipe[os-security-patch-cookbook::u01-root-district-remote]",
+		"recipe[os-security-patch-cookbook::u02-password-complexity]",
+		"recipe[os-security-patch-cookbook::u04-password-file-secure]",
+		"recipe[os-security-patch-cookbook::u05-root-home-path-configure]",
+		"recipe[os-security-patch-cookbook::u06-file-chown-configure]",
+		"recipe[os-security-patch-cookbook::u07-system-important-permission]",
+		"recipe[os-security-patch-cookbook::u11-minimal-user-admin-group]",
+		"recipe[os-security-patch-cookbook::u13-suid-sgid-configure]",
+		"recipe[os-security-patch-cookbook::u14-user-shell-check]",
+		"recipe[os-security-patch-cookbook::u15-world-writable-file-check]",
+		"recipe[os-security-patch-cookbook::u25-env-file-permission-change]",
+		"recipe[os-security-patch-cookbook::u27-dev-unknown-devices-remove]",
+		"recipe[os-security-patch-cookbook::u30-sendmail-service-stop]",
+		"recipe[os-security-patch-cookbook::u33-home-directory-own-permission]",
+		"recipe[os-security-patch-cookbook::u35-remove-hide-file]",
+		"recipe[os-security-patch-cookbook::u45-su-restrict]",
+		"recipe[os-security-patch-cookbook::u48-password-min-day]",
+		"recipe[os-security-patch-cookbook::u49-remove-unnecessary-user]",
+		"recipe[os-security-patch-cookbook::u50-user-root-minimal]",
+		"recipe[os-security-patch-cookbook::u54-session-timeout-profile]",
+		"recipe[os-security-patch-cookbook::u55-apache-unnecessary-file-remove]",
+		"recipe[os-security-patch-cookbook::u61-openssh-port-change]",
+		"recipe[os-security-patch-cookbook::u62-ftp-service-check]",
+		"recipe[os-security-patch-cookbook::u69-login-banner]"
+	], 
+	"release": {
+			"month": "07", 
+			"day": "10", 
+			"year": "2017"
+	}, 
+	"json_class": "Chef::Role", 
+	"description": "PM Install Role"
+}

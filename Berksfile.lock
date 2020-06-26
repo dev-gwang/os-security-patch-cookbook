@@ -1,0 +1,7 @@
+DEPENDENCIES
+  os-security-patch-cookbook
+    path: .
+    metadata: true
+
+GRAPH
+  os-security-patch-cookbook (1.0.0)

@@ -1,0 +1,35 @@
+#
+# Cookbook:: os-security-patch-cookbook
+# Recipe:: init
+#
+# Copyright:: 2019, The Authors, All Rights Reserved.
+
+include_recipe "os-security-patch-cookbook::os-check"
+include_recipe "os-security-patch-cookbook::file-password-auth"
+include_recipe "os-security-patch-cookbook::file-system-auth"
+include_recipe "os-security-patch-cookbook::file-apache-conf"
+include_recipe "os-security-patch-cookbook::u49-remove-unnecessary-user"
+include_recipe "os-security-patch-cookbook::u01-root-district-remote"
+#include_recipe "os-security-patch-cookbook::u02-password-complexity"
+include_recipe "os-security-patch-cookbook::u04-password-file-secure"
+include_recipe "os-security-patch-cookbook::u05-root-home-path-configure"
+include_recipe "os-security-patch-cookbook::u06-file-chown-configure"
+include_recipe "os-security-patch-cookbook::u07-system-important-permission"
+include_recipe "os-security-patch-cookbook::u13-suid-sgid-configure"
+include_recipe "os-security-patch-cookbook::u14-user-shell-check"
+include_recipe "os-security-patch-cookbook::u15-world-writable-file-check"
+include_recipe "os-security-patch-cookbook::u30-sendmail-service-stop"
+include_recipe "os-security-patch-cookbook::u33-home-directory-own-permission"
+include_recipe "os-security-patch-cookbook::u35-remove-hide-file"
+include_recipe "os-security-patch-cookbook::u45-su-restrict"
+include_recipe "os-security-patch-cookbook::u48-password-min-day"
+include_recipe "os-security-patch-cookbook::u50-user-root-minimal"
+include_recipe "os-security-patch-cookbook::u54-session-timeout-profile"
+include_recipe "os-security-patch-cookbook::u55-apache-unnecessary-file-remove"
+# include_recipe "os-security-patch-cookbook::u61-openssh-port-change"
+include_recipe "os-security-patch-cookbook::u62-ftp-service-check"
+include_recipe "os-security-patch-cookbook::u69-login-banner"
+include_recipe "os-security-patch-cookbook::a01-su-file-config"
+include_recipe "os-security-patch-cookbook::a02-unnecessary-services-stop"
+include_recipe "os-security-patch-cookbook::u27-dev-unknown-devices-remove"
+include_recipe "os-security-patch-cookbook::u25-env-file-permission-change"
