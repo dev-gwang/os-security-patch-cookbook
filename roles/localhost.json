@@ -20,7 +20,14 @@
 
 		},
 		"d98-weak-password-remove": {
-
+			"mysql_admin_id": {
+				"type": "value",
+				"value": "root"
+			},
+			"mysql_admin_password": {
+				"type": "type",
+				"value": ""
+			}
 		},
 		"d99-permission-mysql-configure": {
 
@@ -173,9 +180,19 @@
 				"desc":"Apache2 설치 경로"
 			}
 		},
-		"u61-openssh-port-change": {},
+		"u61-openssh-port-change": {
+			"openssh-path": {
+				"type": "value",
+				"value": "/etc/ssh"
+			}
+		},
 		"u62-ftp-service-check": {},
-		"u69-login-banner": {}
+		"u69-login-banner": {
+			"banner-content": {
+				"type": "value",
+				"value": "Alert!! Examples"
+			}
+		}
 	}, 
 	"run_list": [
 		"recipe[os-security-patch-cookbook::a01-su-file-config]",
@@ -184,7 +201,6 @@
 		"recipe[os-security-patch-cookbook::d98-weak-password-remove]",
 		"recipe[os-security-patch-cookbook::d99-permission-mysql-configure]",
 		"recipe[os-security-patch-cookbook::u01-root-district-remote]",
-		"recipe[os-security-patch-cookbook::u02-password-complexity]",
 		"recipe[os-security-patch-cookbook::u04-password-file-secure]",
 		"recipe[os-security-patch-cookbook::u05-root-home-path-configure]",
 		"recipe[os-security-patch-cookbook::u06-file-chown-configure]",
