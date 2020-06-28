@@ -4,18 +4,20 @@
 #
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
-template "/etc/issue.net" do
-    source  "banner.erb"
-    owner   "root"
-    group   "root"
-    mode    "0755"
+banner_content = node["u69-login-banner"]["banner-content"]["value"]
+
+file '/etc/issue.net' do
+    content "#{banner_content}"
+    mode '0755'
+    owner 'root'
+    group 'root'
 end
 
-template "/etc/issue" do
-    source  "banner.erb"
-    owner   "root"
-    group   "root"
-    mode    "0755"
+file '/etc/issue' do
+    content "#{banner_content}"
+    mode '0755'
+    owner 'root'
+    group 'root'
 end
 
 execute "set openssh banner" do
