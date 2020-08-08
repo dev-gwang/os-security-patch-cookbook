@@ -2,7 +2,7 @@
 
 function request(test) {
     var request = new XMLHttpRequest();
-    request.open('GET', 'https://gwangildev.github.io/os-security-patch-cookbook/localhost.json', false);  // `false` makes the request synchronous
+    request.open('GET', 'https://dev-gwang.github.io/os-security-patch-cookbook/roles/localhost.json', false);  // `false` makes the request synchronous
     request.send(null);
 
     if (request.status === 200) {
